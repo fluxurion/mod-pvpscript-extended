@@ -35,3 +35,11 @@ ChestTimer = "120"
 #					 Enable = "1" do not spawn chest if same IP
 #                    
 spawnchestIP = "1"
+
+#
+#    HighRiskMode
+#        Description: Kick & Delete the killed character from database permanently.
+#        Config:     Disable = "0"
+#					 Enable = "1" purge the dead char after chest spawn
+#                    
+HighRiskMode = "0"

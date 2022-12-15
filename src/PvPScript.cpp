@@ -1,4 +1,4 @@
-﻿#include "Configuration/Config.h"
+#include "Configuration/Config.h"
 #include "Player.h"
 #include "Creature.h"
 #include "AccountMgr.h"
@@ -93,6 +93,12 @@ public:
                         go->loot.AddItem(storeItem);
                         killed->DestroyItem(INVENTORY_SLOT_BAG_0, slot, true);
                     }
+
+                if (sConfigMgr->GetBoolDefault("HighRiskMode", false))
+                {
+                    killed->GetSession()->KickPlayer();
+                    killed->DeleteFromDB(killed->GetGUID().GetCounter(), killed->GetSession()->GetAccountId(), false, true);
+                }
             }
         }
     }
@@ -160,6 +166,12 @@ public:
                         go->loot.AddItem(storeItem);
                         killed->DestroyItem(INVENTORY_SLOT_BAG_0, slot, true);
                     }
+
+                if (sConfigMgr->GetBoolDefault("HighRiskMode", false))
+                {
+                    killed->GetSession()->KickPlayer();
+                    killed->DeleteFromDB(killed->GetGUID().GetCounter(), killed->GetSession()->GetAccountId(), false, true);
+                }
             }
         }
     }
